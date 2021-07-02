@@ -1,6 +1,6 @@
 docker stop nginx
 docker rm nginx
-docker run -d --net=host --name nginx --restart=always -p 80:80 \
+docker run -u $(id -u):$(id -g) -d --net=host --name nginx --restart=always -p 80:80 \
 -e TZ=`ls -la /etc/localtime | cut -d/ -f7-8` \
 -v $PWD/www:/usr/share/nginx/html \
 -v $PWD/nginx.conf:/etc/nginx/nginx.conf \
